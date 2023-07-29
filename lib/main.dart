@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:the_meat_vault/views/home_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:the_meat_vault/views/details_page.dart';
 
 void main() {
   runApp(const TheMeatUp());
@@ -10,9 +11,11 @@ class TheMeatUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
+    return const ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: DetailsPage(),
+      ),
     );
   }
 }

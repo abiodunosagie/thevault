@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gap/gap.dart';
@@ -8,6 +9,7 @@ import '../controllers/product_controller.dart';
 import '../widgets/adsbanner_widget.dart';
 import '../widgets/chip_widget.dart';
 import '../widgets/product_card_widget.dart';
+import '../widgets/product_widget.dart';
 
 final currentIndexProvider = StateProvider<int>((ref) {
   return 0;
@@ -105,6 +107,7 @@ class HomePage extends ConsumerWidget {
                   ],
                 ),
                 //Featured products
+
                 SizedBox(
                   width: double.infinity,
                   height: 300,
@@ -119,11 +122,19 @@ class HomePage extends ConsumerWidget {
                   ),
                 ),
                 const Gap(20),
+
+                const ProductCardWidget(),
+                Gap(20),
+
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
+
                       'Featured Sales',
+
+                      'Featured Products',
+
                       style: AppTheme.kHeadingOne,
                     ),
                     Text(
@@ -145,6 +156,18 @@ class HomePage extends ConsumerWidget {
                     child: ProductCardWidget(productIndex: index),
                   ),
                 ),
+
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 4,
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    itemBuilder: (context, index) => const SizedBox(
+                          height: 250,
+                          child: ProductWidget(),
+                        ))
+
               ],
             ),
           ),

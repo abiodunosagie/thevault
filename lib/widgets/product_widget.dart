@@ -1,27 +1,16 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:the_meat_vault/controllers/product_controller.dart';
 
 import '../constants/constants.dart';
 
-import 'package:the_meat_vault/widgets/product_widget.dart';
-
-
-class ProductCardWidget extends ConsumerWidget {
-  const ProductCardWidget({
-    required this.productIndex,
+class ProductWidget extends StatelessWidget {
+  const ProductWidget({
     super.key,
   });
 
-  final int productIndex;
-
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final product = ref.watch(productNotifierProvider);
+  Widget build(BuildContext context) {
     return Container(
-
       decoration: BoxDecoration(
         color: kWhiteColor,
         borderRadius: BorderRadius.circular(8),
@@ -44,7 +33,7 @@ class ProductCardWidget extends ConsumerWidget {
               margin: const EdgeInsets.all(8),
               color: kLightBackground,
               child: Image.asset(
-                product[productIndex].imgUrl,
+                'assets/products/beef.png',
               ),
             ),
           ),
@@ -55,21 +44,21 @@ class ProductCardWidget extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    product[productIndex].title,
+                  const Text(
+                    'Product Name',
                     style: AppTheme.kCardTitle,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    product[productIndex].shortDescription,
+                    'Short description product',
                     style: AppTheme.kBodyTextTwo,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        '\$ ${product[productIndex].price}',
+                      const Text(
+                        '\$ 874',
                         style: AppTheme.kCardTitle,
                       ),
                       IconButton(
@@ -86,17 +75,6 @@ class ProductCardWidget extends ConsumerWidget {
             ),
           ),
         ],
-
-      width: double.infinity,
-      height: 300,
-      //color: Colors.amber,
-      child: ListView.builder(
-        padding: const EdgeInsets.all(5),
-        itemCount: 6,
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => const ProductWidget(),
-
       ),
     );
   }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gap/gap.dart';
 
 import '../constants/constants.dart';
 import '../widgets/adsbanner_widget.dart';
 import '../widgets/chip_widget.dart';
 import '../widgets/product_card_widget.dart';
+import '../widgets/product_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -102,6 +104,32 @@ class _HomePageState extends State<HomePage> {
                 ),
                 //Featured products
                 const ProductCardWidget(),
+                Gap(20),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Featured Products',
+                      style: AppTheme.kHeadingOne,
+                    ),
+                    Text(
+                      'Sell all',
+                      style: AppTheme.kSeeAllText,
+                    ),
+                  ],
+                ),
+                const Gap(20),
+                MasonryGridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 4,
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    itemBuilder: (context, index) => const SizedBox(
+                          height: 250,
+                          child: ProductWidget(),
+                        ))
               ],
             ),
           ),

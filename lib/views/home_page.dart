@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gap/gap.dart';
 
 import '../constants/constants.dart';
+import '../controllers/product_controller.dart';
 import '../widgets/adsbanner_widget.dart';
 import '../widgets/chip_widget.dart';
 import '../widgets/product_card_widget.dart';
 
-class HomePage extends StatefulWidget {
+final currentIndexProvider = StateProvider<int>((ref) {
+  return 0;
+});
+
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final product = ref.watch(productNotifierProvider);
+    final currentIndex = ref.watch(currentIndexProvider);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kSecondaryColor,
@@ -101,11 +105,104 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 //Featured products
-                const ProductCardWidget(),
+                SizedBox(
+                  width: double.infinity,
+                  height: 300,
+                  //color: Colors.amber,
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(5),
+                    itemCount: product.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) =>
+                        ProductCardWidget(productIndex: index),
+                  ),
+                ),
+                const Gap(20),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Featured Sales',
+                      style: AppTheme.kHeadingOne,
+                    ),
+                    Text(
+                      'Sell all',
+                      style: AppTheme.kSeeAllText,
+                    ),
+                  ],
+                ),
+                const Gap(20),
+                MasonryGridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: product.length,
+                  gridDelegate:
+                      const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2),
+                  itemBuilder: (context, index) => SizedBox(
+                    height: 250,
+                    child: ProductCardWidget(productIndex: index),
+                  ),
+                ),
               ],
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (value) =>
+            ref.read(currentIndexProvider.notifier).update((state) => value),
+        selectedItemColor: kSecondaryColor,
+        unselectedItemColor: kSecondaryThree,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+            label: 'Home',
+            activeIcon: Icon(
+              Icons.home_rounded,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite_outline_rounded,
+            ),
+            label: 'Home',
+            activeIcon: Icon(
+              Icons.favorite_rounded,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.place_outlined,
+            ),
+            label: 'Home',
+            activeIcon: Icon(
+              Icons.place,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.notifications_outlined,
+            ),
+            label: 'Home',
+            activeIcon: Icon(
+              Icons.notifications,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person_outline,
+            ),
+            label: 'Home',
+            activeIcon: Icon(
+              Icons.person,
+            ),
+          ),
+        ],
       ),
     );
   }

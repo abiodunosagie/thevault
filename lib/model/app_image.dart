@@ -1,0 +1,47 @@
+class AppImage {
+  static const String _basePng = 'assets/products/';
+  static const String airPodMax = '${_basePng}airpodmax.png';
+  static const String airPodPro = '${_basePng}airpodpro.png';
+  static const String appleWatch = '${_basePng}applewatch.png';
+  static const String appleWatch2 = '${_basePng}applewatch2.png';
+  static const String appleWatch3 = '${_basePng}applewatch3.png';
+  static const String dell = '${_basePng}dell.png';
+  static const String gamingLaptop = '${_basePng}gaminglaptop.png';
+  static const String imac = '${_basePng}imac.png';
+  static const String ipad = '${_basePng}ipad.png';
+  static const String iphone11 = '${_basePng}iphone11.png';
+  static const String iphone12 = '${_basePng}iphone12.png';
+  static const String iphone13 = '${_basePng}iphone13.png';
+  static const String jbl = '${_basePng}jbl.png';
+  static const String jbl1 = '${_basePng}jbl1.png';
+  static const String jbl2 = '${_basePng}jbl2.png';
+  static const String jbl3 = '${_basePng}jbl3.png';
+  static const String jbl4 = '${_basePng}jbl4.png';
+  static const String jbl5 = '${_basePng}jbl5.png';
+  static const String jblHeadphone = '${_basePng}jblheadphone.png';
+  static const String jblHeadphone2 = '${_basePng}jblheadphone2.png';
+  static const String jblHeadphone3 = '${_basePng}jblheadphone3.png';
+  static const String jblHeadphoneBlack = '${_basePng}jblheadphoneblack.png';
+  static const String macbookPro = '${_basePng}macbookpro.png';
+  static const String macbookPro2 = '${_basePng}macbookpro2.png';
+  static const String person = '${_basePng}person.png';
+  static const String samsung = '${_basePng}samsung.png';
+  static const String samsungBuds = '${_basePng}samsungbuds.png';
+  static const String samsungLogo = '${_basePng}samsunglogo.png';
+  static const String samsungTv = '${_basePng}samsungtv.png';
+  static const String samsungWashingMachine =
+      '${_basePng}samsungwashingmachine.png';
+  static const String samsungWatch = '${_basePng}samsungwatch.png';
+  static const String sandisk = '${_basePng}sandisk.png';
+  static const String sandisk32 = '${_basePng}sandisk32.png';
+  static const String sandisk64 = '${_basePng}sandisk64.png';
+  static const String storeLogo = '${_basePng}storelogo.png';
+  static const String tv = '${_basePng}tv.png';
+  static const String windows = '${_basePng}windows.png';
+  static const String windows10 = '${_basePng}windows10.png';
+  static const String windowsDesktop = '${_basePng}windowsdesktop.png';
+  static const String windowsScreen = '${_basePng}windowsscreen.png';
+  static const String windowsTwo = '${_basePng}windowstwo.png';
+  static const String hand = '${_basePng}hand.png';
+  static const String logo = '${_basePng}logo.png';
+}

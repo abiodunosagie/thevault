@@ -23,7 +23,7 @@ class ProductCardWidget extends ConsumerWidget {
     return Container(
 
       decoration: BoxDecoration(
-        color: kWhiteColor,
+        color: TheVaultColor.kWhiteColor,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
@@ -42,47 +42,45 @@ class ProductCardWidget extends ConsumerWidget {
             child: Container(
               width: double.infinity,
               margin: const EdgeInsets.all(8),
-              color: kLightBackground,
+              color: TheVaultColor.kLightBackground,
               child: Image.asset(
                 product[productIndex].imgUrl,
               ),
             ),
           ),
           const Gap(4),
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product[productIndex].title,
-                    style: AppTheme.kCardTitle,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    product[productIndex].shortDescription,
-                    style: AppTheme.kBodyTextTwo,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '\$ ${product[productIndex].price}',
-                        style: AppTheme.kCardTitle,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product[productIndex].title,
+                  style: AppTheme.kCardTitle,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  product[productIndex].shortDescription,
+                  style: AppTheme.kBodyTextTwo,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '\$ ${product[productIndex].price}',
+                      style: AppTheme.kCardTitle,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.add_circle,
+                        size: 30,
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.add_circle,
-                          size: 30,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
         ],

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-const kPrimaryColor = Color(0xff843667);
-const kSecondaryColor = Color(0xff022238);
-const kThirdColor = Color(0xffFFDCBC);
-const kLightBackground = Color(0xffe8f6fb);
-const kWhiteColor = Color(0xffffffff);
-const kBlackColor = Color(0xff000000);
-const kPrimaryTwo = Color(0xffffe5b4);
-const kSecondaryTwo = Color(0xffa52c29);
-const kSecondaryThree = Color(0xffEA6113);
+class TheVaultColor {
+  static const kPrimaryColor = Color(0xff843667);
+  static const kSecondaryColor = Color(0xff022238);
+  static const kThirdColor = Color(0xffFFDCBC);
+  static const kLightBackground = Color(0xffe8f6fb);
+  static const kWhiteColor = Color(0xffffffff);
+  static const kBlackColor = Color(0xff000000);
+}
 
 class AppTheme {
-  static const kBigTitle = TextStyle(
-    color: kWhiteColor,
+  static TextStyle kBigTitle = GoogleFonts.poppins(
+    color: TheVaultColor.kWhiteColor,
     fontSize: 25,
     fontWeight: FontWeight.bold,
   );
@@ -20,18 +20,22 @@ class AppTheme {
     color: Colors.white,
     fontSize: 12,
   );
-  static final kBodyTextTwo = TextStyle(
+  static TextStyle kBodyTextTwo = GoogleFonts.poppins(
     color: Colors.grey.shade500,
     fontSize: 12,
   );
 
-  static const kCardTitle = TextStyle(
+  static TextStyle kCardTitle = GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.bold,
   );
-  static const kHeadingOne = TextStyle(
-      fontSize: 20, fontWeight: FontWeight.bold, color: kSecondaryColor);
+  static TextStyle kHeadingOne = GoogleFonts.poppins(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: TheVaultColor.kSecondaryColor);
 
-  static const kSeeAllText = TextStyle(
-      color: kSecondaryThree, fontWeight: FontWeight.w500, fontSize: 15);
+  static TextStyle kSeeAllText = GoogleFonts.poppins(
+      color: TheVaultColor.kSecondaryColor,
+      fontWeight: FontWeight.w500,
+      fontSize: 15);
 }

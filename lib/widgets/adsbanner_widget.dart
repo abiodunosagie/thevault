@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:the_meat_vault/model/app_image.dart';
 
 import '../constants/constants.dart';
 
@@ -14,9 +15,9 @@ class AdsBannerWidget extends StatelessWidget {
       width: double.infinity,
       height: 180,
       decoration: BoxDecoration(
-        color: kSecondaryColor,
+        color: TheVaultColor.kPrimaryColor,
         border: Border.all(
-          color: kSecondaryColor.withOpacity(
+          color: TheVaultColor.kSecondaryColor.withOpacity(
             0.8,
           ),
           width: 0.8,
@@ -47,23 +48,24 @@ class AdsBannerWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'The Meat Vault',
-                    style: AppTheme.kBigTitle,
+                  Text(
+                    'Shopiverse',
+                    style: AppTheme.kBigTitle.copyWith(
+                      color: TheVaultColor.kWhiteColor,
+                    ),
                   ),
-                  const Gap(8),
+                  const Gap(6),
                   Text(
                     "Find the Apple product and\naccesories you're looking.",
                     style: AppTheme.kBodyText.copyWith(
-                        color: Colors.white.withOpacity(
-                      0.8,
-                    )),
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   const Gap(8),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: kWhiteColor,
-                        foregroundColor: kSecondaryColor,
+                        backgroundColor: TheVaultColor.kWhiteColor,
+                        foregroundColor: TheVaultColor.kPrimaryColor,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 35,
                           vertical: 12,
@@ -75,15 +77,24 @@ class AdsBannerWidget extends StatelessWidget {
                         )),
                     onPressed: () {},
                     child: const Text(
-                      'Buy fresh meat',
+                      'Order Now',
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          Image.asset(
-            'assets/products/livechicken.png',
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 10,
+              ),
+              child: Image.asset(
+                AppImage.hand,
+                // width: 50,
+                // height: 50,
+              ),
+            ),
           ),
         ],
       ),

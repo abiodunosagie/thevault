@@ -2,7 +2,7 @@ class ProductModel {
   final int pid;
   final String imgUrl;
   final String title;
-  final String price;
+  final double price; // Change type to double
   final String shortDescription;
   final String longDescription;
   final int reviews;
@@ -22,4 +22,30 @@ class ProductModel {
     this.isSelected = false,
     this.qty = 1,
   });
+
+  ProductModel copyWith({
+    int? pid,
+    String? imgUrl,
+    String? title,
+    double? price, // Change type to double
+    String? shortDescription,
+    String? longDescription,
+    int? reviews,
+    double? rating,
+    bool? isSelected,
+    int? qty,
+  }) {
+    return ProductModel(
+      pid: pid ?? this.pid,
+      imgUrl: imgUrl ?? this.imgUrl,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      shortDescription: shortDescription ?? this.shortDescription,
+      longDescription: longDescription ?? this.longDescription,
+      reviews: reviews ?? this.reviews,
+      rating: rating ?? this.rating,
+      isSelected: isSelected ?? this.isSelected,
+      qty: qty ?? this.qty,
+    );
+  }
 }

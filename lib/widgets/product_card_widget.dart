@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:the_meat_vault/controllers/cart_controller.dart';
 import 'package:the_meat_vault/controllers/product_controller.dart';
+import 'package:the_meat_vault/model/product_model.dart';
 
 import '../constants/constants.dart';
-
-import 'package:the_meat_vault/widgets/product_widget.dart';
-
 
 class ProductCardWidget extends ConsumerWidget {
   const ProductCardWidget({
@@ -21,7 +19,6 @@ class ProductCardWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final product = ref.watch(productNotifierProvider);
     return Container(
-
       decoration: BoxDecoration(
         color: TheVaultColor.kWhiteColor,
         borderRadius: BorderRadius.circular(8),
@@ -72,29 +69,44 @@ class ProductCardWidget extends ConsumerWidget {
                       style: AppTheme.kCardTitle,
                     ),
                     IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.add_circle,
+                      onPressed: () {
+                        ref.read(productNotifierProvider.notifier).isSelectItem(
+                            product[productIndex].pid, productIndex);
+
+                        if (product[productIndex].isSelected == false) {
+                          ref.read(itemBagProvider.notifier).addNewItemBag(
+                                ProductModel(
+                                  pid: product[productIndex].pid,
+                                  imgUrl: product[productIndex].imgUrl,
+                                  title: product[productIndex].title,
+                                  price: product[productIndex].price,
+                                  shortDescription:
+                                      product[productIndex].shortDescription,
+                                  longDescription:
+                                      product[productIndex].longDescription,
+                                  reviews: product[productIndex].reviews,
+                                  rating: product[productIndex].rating,
+                                ),
+                              );
+                        } else {
+                          ref
+                              .read(itemBagProvider.notifier)
+                              .removeItem(product[productIndex].pid);
+                        }
+                      },
+                      icon: Icon(
+                        product[productIndex].isSelected
+                            ? Icons.check_circle
+                            : Icons.add_circle,
                         size: 30,
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),
         ],
-
-      width: double.infinity,
-      height: 300,
-      //color: Colors.amber,
-      child: ListView.builder(
-        padding: const EdgeInsets.all(5),
-        itemCount: 6,
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => const ProductWidget(),
-
       ),
     );
   }

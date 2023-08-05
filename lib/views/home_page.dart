@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gap/gap.dart';
+import 'package:the_meat_vault/controllers/cart_controller.dart';
+import 'package:the_meat_vault/views/cart.dart';
 import 'package:the_meat_vault/views/details_page.dart';
+import 'package:the_meat_vault/views/shop.dart';
 
 import '../constants/constants.dart';
 import '../controllers/product_controller.dart';
@@ -22,6 +25,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final product = ref.watch(productNotifierProvider);
     final currentIndex = ref.watch(currentIndexProvider);
+    final cartItem = ref.watch(itemBagProvider);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: TheVaultColor.kSecondaryColor,
@@ -33,12 +37,27 @@ class HomePage extends ConsumerWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(
-              right: 20,
+              top: 10,
+              right: 10,
             ),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.local_mall_rounded,
+            child: Badge(
+              label: Text(
+                cartItem.length.toString(),
+              ),
+              alignment: Alignment.topCenter,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CartScreen(),
+                    ),
+                  );
+                },
+                icon: const Icon(
+                  Icons.local_mall_rounded,
+                  size: 20,
+                ),
               ),
             ),
           ),
@@ -109,9 +128,19 @@ class HomePage extends ConsumerWidget {
                       'Hot Sales',
                       style: AppTheme.kHeadingOne,
                     ),
-                    Text(
-                      'Sell all',
-                      style: AppTheme.kSeeAllText,
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Shop(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'See All',
+                        style: AppTheme.kSeeAllText,
+                      ),
                     ),
                   ],
                 ),
@@ -146,9 +175,19 @@ class HomePage extends ConsumerWidget {
                       'Featured Sales',
                       style: AppTheme.kHeadingOne,
                     ),
-                    Text(
-                      'Sell all',
-                      style: AppTheme.kSeeAllText,
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Shop(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'See All',
+                        style: AppTheme.kSeeAllText,
+                      ),
                     ),
                   ],
                 ),
@@ -156,7 +195,7 @@ class HomePage extends ConsumerWidget {
                 MasonryGridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: product.length,
+                  itemCount: 6,
                   gridDelegate:
                       const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),

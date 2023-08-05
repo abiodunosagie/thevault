@@ -6,7 +6,7 @@ List<ProductModel> productItems = [
     pid: 1,
     imgUrl: AppImage.airPodMax,
     title: 'Airpod Pro Max',
-    price: '1500',
+    price: 1500,
     shortDescription: 'The AirPods Max boast a premium over-ear design',
     longDescription:
         'Premium Design: The AirPods Max boast a premium over-ear design, crafted with a combination of stainless steel headband and aluminum ear cups. The ear cups feature memory foam cushions covered in a breathable mesh material, offering comfort during extended listening sessions. High-Fidelity Audio: These wireless headphones deliver high-fidelity sound with rich bass, crisp mids, and clear highs. Equipped with Apple-designed dynamic drivers and advanced software, they aim to provide an immersive audio experience',
@@ -17,7 +17,7 @@ List<ProductModel> productItems = [
     pid: 2,
     imgUrl: AppImage.airPodPro,
     title: 'Air Pod Pro',
-    price: '950',
+    price: 950,
     shortDescription:
         'The AirPods Pro feature an in-ear design with three sizes of soft',
     longDescription:
@@ -29,7 +29,7 @@ List<ProductModel> productItems = [
     pid: 3,
     imgUrl: AppImage.appleWatch,
     title: 'Apple Watch Series 5',
-    price: '1100.99',
+    price: 1100.99,
     shortDescription: 'The Series 5 continued the design of the Series 4',
     longDescription:
         'Apple Watch Series 5: The Series 5 continued the design of the Series 4 but added an Always-On Retina display, allowing users to glance at the time and watch face without having to raise their wrist. It also featured a built-in compass and international emergency calling on cellular models.',
@@ -40,7 +40,7 @@ List<ProductModel> productItems = [
     pid: 4,
     imgUrl: AppImage.appleWatch2,
     title: 'Apple Watch SE',
-    price: '21',
+    price: 21,
     shortDescription:
         ' The SE model was designed to offer essential Apple Watch feature',
     longDescription:
@@ -52,7 +52,7 @@ List<ProductModel> productItems = [
     pid: 5,
     imgUrl: AppImage.appleWatch3,
     title: 'Apple Watch Series 4',
-    price: '11',
+    price: 11,
     shortDescription:
         'The Series 4 marked a significant design overhaul with larger displays and a thinner profile. ',
     longDescription:
@@ -64,7 +64,7 @@ List<ProductModel> productItems = [
     pid: 5,
     imgUrl: AppImage.dell,
     title: 'The Dell Latitude 5400',
-    price: '11.22',
+    price: 11.22,
     shortDescription:
         'The Dell Latitude 5400 is a business-oriented laptop designed for professionals ',
     longDescription:
@@ -76,7 +76,7 @@ List<ProductModel> productItems = [
     pid: 6,
     imgUrl: AppImage.gamingLaptop,
     title: 'Dell G Series Laptops',
-    price: '43',
+    price: 43,
     shortDescription:
         'The Dell G Series includes more budget-friendly gaming laptops that still offer good gaming performance.',
     longDescription:
@@ -88,7 +88,7 @@ List<ProductModel> productItems = [
     pid: 7,
     imgUrl: AppImage.imac,
     title: 'Apple iMac ',
-    price: '09.99',
+    price: 09.99,
     shortDescription:
         ' The iMac is renowned for its elegant and minimalist design, with a slim profile and aluminum construction.',
     longDescription: """
@@ -100,7 +100,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 8,
     imgUrl: AppImage.ipad,
     title: 'Apple Ipad',
-    price: '32',
+    price: 32,
     shortDescription:
         'The iPad features a sleek and lightweight design, with a slim profile and rounded corners. ',
     longDescription:
@@ -112,7 +112,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 9,
     imgUrl: AppImage.iphone11,
     title: 'Iphone 11',
-    price: '600',
+    price: 600,
     shortDescription:
         ' The iPhone 11 features a similar design to its predecessor, the iPhone XR.',
     longDescription:
@@ -124,7 +124,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 10,
     imgUrl: AppImage.iphone12,
     title: 'Iphone 12',
-    price: '1099.00',
+    price: 1099.00,
     shortDescription:
         'The iPhone 12 features a new design compared to its predecessor, with flat-edge aluminum frame and a glass back. ',
     longDescription:
@@ -136,7 +136,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 11,
     imgUrl: AppImage.iphone13,
     title: 'Iphone 13',
-    price: '1700.99',
+    price: 1700.99,
     shortDescription:
         ' Apple often introduces design refinements with each new iPhone iteration.',
     longDescription:
@@ -148,7 +148,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 12,
     imgUrl: AppImage.jbl,
     title: 'Jbl Speaker',
-    price: '744',
+    price: 744,
     shortDescription:
         'JBL is a well-known brand that manufactures a wide range of audio products, including portable speakers.',
     longDescription:
@@ -160,7 +160,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 13,
     imgUrl: AppImage.jbl1,
     title: ' Jbl Speaker T420',
-    price: '980',
+    price: 980,
     shortDescription:
         'JBL is a well-known brand that manufactures a wide range of audio products, including portable speakers.',
     longDescription:
@@ -172,7 +172,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 14,
     imgUrl: AppImage.jbl3,
     title: 'Jbl Speaker T730',
-    price: '2230',
+    price: 2230,
     shortDescription:
         'JBL is a well-known brand that manufactures a wide range of audio products, including portable speakers.',
     longDescription:
@@ -184,7 +184,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.jblHeadphone,
     title: 'Jbl HeadPhone r34x',
-    price: '500',
+    price: 221,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -196,7 +196,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.jbl4,
     title: 'Jbl HeadPhone r34x',
-    price: '500',
+    price: 443,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -208,7 +208,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.jbl5,
     title: 'Jbl HeadPhone r34x',
-    price: '500',
+    price: 452,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -220,7 +220,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.macbookPro,
     title: 'MacBook Pro',
-    price: '3900',
+    price: 3900,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -232,7 +232,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.samsung,
     title: 'Samsung Galaxy',
-    price: '500',
+    price: 340,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -244,7 +244,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.samsungBuds,
     title: 'Samsung Buds',
-    price: '500',
+    price: 200,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -256,7 +256,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.samsungTv,
     title: 'Samsung Smart Tv',
-    price: '500',
+    price: 600,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -268,7 +268,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.samsungWashingMachine,
     title: 'Washing Machine',
-    price: '500',
+    price: 2110,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -280,7 +280,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.sandisk,
     title: 'Flash Drive 32 gb',
-    price: '500',
+    price: 20,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -292,7 +292,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.sandisk64,
     title: 'Flash Drive 64gb',
-    price: '500',
+    price: 60,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -304,7 +304,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.windows,
     title: 'Windows 10 NoteBook',
-    price: '500',
+    price: 500,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:
@@ -316,7 +316,7 @@ The iMac is renowned for its elegant and minimalist design, with a slim profile 
     pid: 15,
     imgUrl: AppImage.windows10,
     title: 'Windows HP Laptop',
-    price: '500',
+    price: 500,
     shortDescription:
         'Many JBL headphones are wireless and utilize Bluetooth technology ',
     longDescription:

@@ -8,6 +8,7 @@ class TheVaultColor {
   static const kLightBackground = Color(0xffe8f6fb);
   static const kWhiteColor = Color(0xffffffff);
   static const kBlackColor = Color(0xff000000);
+  static const kGreen = Color(0xff3CB371);
 }
 
 class AppTheme {

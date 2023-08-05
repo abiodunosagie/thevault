@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:the_meat_vault/model/app_image.dart';
 
 import '../constants/constants.dart';
+import '../views/shop.dart';
 
 class AdsBannerWidget extends StatelessWidget {
   const AdsBannerWidget({
@@ -75,7 +76,14 @@ class AdsBannerWidget extends StatelessWidget {
                             5,
                           ),
                         )),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Shop(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Order Now',
                     ),

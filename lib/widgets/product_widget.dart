@@ -12,7 +12,7 @@ class ProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: kWhiteColor,
+        color: TheVaultColor.kWhiteColor,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
@@ -31,7 +31,7 @@ class ProductWidget extends StatelessWidget {
             child: Container(
               width: double.infinity,
               margin: const EdgeInsets.all(8),
-              color: kLightBackground,
+              color: TheVaultColor.kLightBackground,
               child: Image.asset(
                 'assets/products/beef.png',
               ),
@@ -44,7 +44,7 @@ class ProductWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Product Name',
                     style: AppTheme.kCardTitle,
                     overflow: TextOverflow.ellipsis,
@@ -57,7 +57,7 @@ class ProductWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         '\$ 874',
                         style: AppTheme.kCardTitle,
                       ),

@@ -3,16 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gap/gap.dart';
 import 'package:the_meat_vault/controllers/cart_controller.dart';
+import 'package:the_meat_vault/data/data_provider.dart';
+import 'package:the_meat_vault/model/my_product_model.dart';
 import 'package:the_meat_vault/views/cart.dart';
-import 'package:the_meat_vault/views/details_page.dart';
 import 'package:the_meat_vault/views/shop.dart';
 
 import '../constants/constants.dart';
-import '../controllers/product_controller.dart';
 import '../model/app_image.dart';
 import '../widgets/adsbanner_widget.dart';
 import '../widgets/chip_widget.dart';
-import '../widgets/product_card_widget.dart';
+import '../widgets/live_product_card_widget.dart';
+import 'details_page.dart';
 
 final currentIndexProvider = StateProvider<int>((ref) {
   return 0;
@@ -23,7 +24,8 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final product = ref.watch(productNotifierProvider);
+    final data = ref.watch(userDataProvider);
+
     final currentIndex = ref.watch(currentIndexProvider);
     final cartItem = ref.watch(itemBagProvider);
     return Scaffold(
@@ -63,162 +65,193 @@ class HomePage extends ConsumerWidget {
           ),
         ],
       ),
-      drawer: const Drawer(),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(25),
-            child: Column(
-              children: [
-                //Ads banner section
-                const AdsBannerWidget(),
-                //Chip section
-                SizedBox(
-                  height: 80,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    children: const [
-                      ChipWidget(chipLabel: 'iPhone'),
-                      ChipWidget(
-                        chipLabel: 'Samsung Galaxy',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'Google Pixel',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'AirPod Max',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'OnePlus',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'Dell',
-                      ),
-                      ChipWidget(chipLabel: 'Lenovo'),
-                      ChipWidget(
-                        chipLabel: 'Alien Ware',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'MSI',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'AirPod Pro',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'Samsung Bud',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'Chrome Book',
-                      ),
-                      ChipWidget(
-                        chipLabel: 'Ultra Book',
-                      ),
-                    ],
-                  ),
-                ),
-                //Hot sales section
-                const Gap(
-                  12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: data.when(
+        data: (data) {
+          List<UserProductModel> userList = data.map((e) => e).toList();
+          return SingleChildScrollView(
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(25),
+                child: Column(
                   children: [
-                    Text(
-                      'Hot Sales',
-                      style: AppTheme.kHeadingOne,
+                    //Ads banner section
+                    AdsBannerWidget(
+                      userList: userList,
+                      liveProductIndex: 0,
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Shop(),
+                    //Chip section
+                    SizedBox(
+                      height: 80,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        children: const [
+                          ChipWidget(chipLabel: 'iPhone'),
+                          ChipWidget(
+                            chipLabel: 'Samsung Galaxy',
                           ),
-                        );
-                      },
-                      child: Text(
-                        'See All',
-                        style: AppTheme.kSeeAllText,
+                          ChipWidget(
+                            chipLabel: 'Google Pixel',
+                          ),
+                          ChipWidget(
+                            chipLabel: 'AirPod Max',
+                          ),
+                          ChipWidget(
+                            chipLabel: 'OnePlus',
+                          ),
+                          ChipWidget(
+                            chipLabel: 'Dell',
+                          ),
+                          ChipWidget(chipLabel: 'Lenovo'),
+                          ChipWidget(
+                            chipLabel: 'Alien Ware',
+                          ),
+                          ChipWidget(
+                            chipLabel: 'MSI',
+                          ),
+                          ChipWidget(
+                            chipLabel: 'AirPod Pro',
+                          ),
+                          ChipWidget(
+                            chipLabel: 'Samsung Bud',
+                          ),
+                          ChipWidget(
+                            chipLabel: 'Chrome Book',
+                          ),
+                          ChipWidget(
+                            chipLabel: 'Ultra Book',
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-                //Featured products
-                SizedBox(
-                  width: double.infinity,
-                  height: 300,
-                  //color: Colors.amber,
-                  child: ListView.builder(
-                    padding: const EdgeInsets.all(5),
-                    itemCount: product.length,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => GestureDetector(
+                    //Hot sales section
+                    const Gap(
+                      12,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Hot Sales',
+                          style: AppTheme.kHeadingOne,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Shop(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'See All',
+                            style: AppTheme.kSeeAllText,
+                          ),
+                        ),
+                      ],
+                    ),
+                    //Featured products
+
+                    SizedBox(
+                      width: double.infinity,
+                      height: 300,
+                      //color: Colors.amber,
+                      child: ListView.builder(
+                        padding: const EdgeInsets.all(5),
+                        itemCount: userList.length,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsPage(
+                                  e: userList[index],
+                                ),
+                              ),
+                            );
+                          },
+                          child: LiveProductCardWidget(
+                            userList: userList,
+                            liveProductIndex: index,
+                          ),
+
+                          // ProductCardWidget(
+                          //   productIndex: index,
+                          // ),
+                        ),
+                      ),
+                    ),
+                    const Gap(20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Featured Sales',
+                          style: AppTheme.kHeadingOne,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Shop(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'See All',
+                            style: AppTheme.kSeeAllText,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Gap(20),
+                    MasonryGridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: userList.length,
+                      gridDelegate:
+                          const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2),
+                      itemBuilder: (context, index) => GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  DetailsPage(getIndex: index),
+                              builder: (context) => DetailsPage(
+                                e: userList[index],
+                              ),
                             ),
                           );
                         },
-                        child: ProductCardWidget(productIndex: index)),
-                  ),
-                ),
-                const Gap(20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Featured Sales',
-                      style: AppTheme.kHeadingOne,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Shop(),
+                        child: SizedBox(
+                          height: 250,
+                          child: LiveProductCardWidget(
+                            userList: userList,
+                            liveProductIndex: index,
                           ),
-                        );
-                      },
-                      child: Text(
-                        'See All',
-                        style: AppTheme.kSeeAllText,
+
+                          //   ProductCardWidget(productIndex: index),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                const Gap(20),
-                MasonryGridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 6,
-                  gridDelegate:
-                      const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2),
-                  itemBuilder: (context, index) => GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailsPage(getIndex: index),
-                        ),
-                      );
-                    },
-                    child: SizedBox(
-                      height: 250,
-                      child: ProductCardWidget(productIndex: index),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+          );
+        },
+        error: (err, s) => Text(
+          err.toString(),
+        ),
+        loading: () => const Center(
+          child: CircularProgressIndicator(),
         ),
       ),
+//bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (value) =>

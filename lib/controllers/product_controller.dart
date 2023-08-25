@@ -16,6 +16,7 @@ class ProductNotifier extends StateNotifier<List<ProductModel>> {
     ];
   }
 
+//increase quantity state
   void incrementQty(int pid) {
     state = [
       for (final product in state)
@@ -26,6 +27,7 @@ class ProductNotifier extends StateNotifier<List<ProductModel>> {
     ];
   }
 
+//decrease quantity state
   void decreaseQty(int pid) {
     state = [
       for (final product in state)

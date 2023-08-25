@@ -44,6 +44,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   google_fonts: ^5.1.0
   carousel_slider: ^4.2.1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -67,11 +68,13 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
+# To add assets to your application, add an assets section, like this:
+
   assets:
     - assets/
     - assets/logo/
     - assets/products/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

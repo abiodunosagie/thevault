@@ -4,17 +4,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:the_meat_vault/constants/constants.dart';
 import 'package:the_meat_vault/controllers/product_controller.dart';
+import 'package:the_meat_vault/model/my_product_model.dart';
 import 'package:the_meat_vault/views/home_page.dart';
 
 class DetailsPage extends ConsumerWidget {
-  DetailsPage({super.key, required this.getIndex});
+  const DetailsPage({super.key, required this.e});
 
-  int getIndex;
+  final UserProductModel e;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentIndex = ref.watch(currentIndexProvider);
-    final product = ref.watch(productNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -45,11 +45,13 @@ class DetailsPage extends ConsumerWidget {
               ),
               height: 300,
               width: double.infinity,
-              color: TheVaultColor.kLightBackground,
-              child: Image.asset(
-                product[getIndex].imgUrl,
-              ),
+              color: TheVaultColor.kWhiteColor,
+              child: Image.network(e.image),
             ),
+            const Gap(
+              10,
+            ),
+            const Divider(),
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
@@ -59,16 +61,18 @@ class DetailsPage extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product[getIndex].title,
+                    e.title,
                     style: AppTheme.kBigTitle.copyWith(
                       color: TheVaultColor.kPrimaryColor,
                     ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   Row(
                     children: [
                       RatingBar(
                         itemSize: 20,
-                        initialRating: 1,
+                        initialRating: e.rating,
                         minRating: 1,
                         maxRating: 5,
                         allowHalfRating: true,
@@ -88,9 +92,9 @@ class DetailsPage extends ConsumerWidget {
                         ),
                         onRatingUpdate: (value) {},
                       ),
-                      const Gap(12),
+                      const Gap(5),
                       Text(
-                        '125 reviews',
+                        ' ${e.ratingInfo['count'].toString()} ratings',
                         style: AppTheme.kBodyText.copyWith(
                           color: TheVaultColor.kBlackColor,
                           fontWeight: FontWeight.w500,
@@ -99,13 +103,13 @@ class DetailsPage extends ConsumerWidget {
                     ],
                   ),
                   const Gap(8),
-                  Text(product[getIndex].longDescription),
+                  Text(e.description),
                   const Gap(8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$${product[getIndex].price * product[getIndex].qty}',
+                        '\$${e.price}',
                         style: AppTheme.kHeadingOne.copyWith(),
                       ),
                       Row(
@@ -114,24 +118,17 @@ class DetailsPage extends ConsumerWidget {
                             onPressed: () {
                               ref
                                   .read(productNotifierProvider.notifier)
-                                  .decreaseQty(product[getIndex].pid);
+                                  .decreaseQty(e.id);
                             },
                             icon: const Icon(
                               Icons.do_not_disturb_on_outlined,
-                            ),
-                          ),
-                          Text(
-                            product[getIndex].qty.toString(),
-                            style: AppTheme.kCardTitle.copyWith(
-                              color: TheVaultColor.kBlackColor,
-                              fontWeight: FontWeight.w700,
                             ),
                           ),
                           IconButton(
                             onPressed: () {
                               ref
                                   .read(productNotifierProvider.notifier)
-                                  .incrementQty(product[getIndex].pid);
+                                  .incrementQty(e.id);
                             },
                             icon: const Icon(
                               Icons.add_circle_outline,

@@ -42,6 +42,7 @@ class ProductCardWidget extends ConsumerWidget {
               color: TheVaultColor.kLightBackground,
               child: Image.asset(
                 product[productIndex].imgUrl,
+                fit: BoxFit.contain,
               ),
             ),
           ),
@@ -64,9 +65,11 @@ class ProductCardWidget extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      '\$ ${product[productIndex].price}',
-                      style: AppTheme.kCardTitle,
+                    Flexible(
+                      child: Text(
+                        '\$ ${product[productIndex].price}',
+                        style: AppTheme.kCardTitle,
+                      ),
                     ),
                     IconButton(
                       onPressed: () {

@@ -5,7 +5,6 @@ import 'package:the_meat_vault/views/authentication/signin.dart';
 
 import '../../components/custom_text_form.dart';
 import '../home_page.dart';
-import 'forgot_password.dart';
 
 class PhoneLogin extends StatelessWidget {
   const PhoneLogin({super.key});
@@ -75,14 +74,7 @@ class PhoneLogin extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ForgotPassword(),
-                    ),
-                  );
-                },
+                onPressed: () {},
                 child: Text(
                   'Forgot password',
                   style: AppTheme.kBody.copyWith(

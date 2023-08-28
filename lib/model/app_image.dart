@@ -49,9 +49,13 @@ class AppImage {
   static const String windowsTwo = '${_basePng}windowstwo.png';
   static const String hand = '${_basePng}hand.png';
   static const String logo = '${_basePng}logo.png';
+  static const String signup = '${_basePng}signup.png';
+  static const String resetPassword = '${_basePng}reset_password.png';
   //Gif imports
   static const String deliveredGif = '${_baseGif}delivered.gif';
   static const String messageGif = '${_baseGif}message.gif';
   static const String orderingGif = '${_baseGif}ordering.gif';
   static const String shoppingGif = '${_baseGif}shopping.gif';
+  static const String emailVerification = '${_baseGif}email_verification.gif';
+  static const String login = '${_baseGif}login.gif';
 }

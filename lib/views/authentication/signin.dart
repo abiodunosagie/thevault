@@ -1,18 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:the_meat_vault/constants/constants.dart';
-import 'package:the_meat_vault/views/authentication/forgot_password.dart';
 import 'package:the_meat_vault/views/authentication/phone_login.dart';
-import 'package:the_meat_vault/views/authentication/signup.dart';
 import 'package:the_meat_vault/views/home_page.dart';
-import 'package:the_meat_vault/views/privacy_policy.dart';
-import 'package:the_meat_vault/views/terms_and_service.dart';
 
 import '../../components/custom_text_form.dart';
 import '../../model/app_image.dart';
 import 'firebase_auth_implementation/firebase_auth_service.dart';
+import 'forgot_password/forgot_password_options/forgot_password_modal_bottom_sheet.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -55,13 +51,26 @@ class _SignInState extends State<SignIn> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Gap(50),
-                  Center(
-                    child: Text(
-                      'Login',
-                      style: AppTheme.kHeading.copyWith(
-                        color: TheVaultColor.kS0,
-                      ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      AppImage.login,
+                      height: 300,
+                    ),
+                  ),
+
+                  Text(
+                    'Welcome Back,',
+                    style: AppTheme.kHeading.copyWith(
+                      color: TheVaultColor.kS0,
+                      fontSize: 28,
+                    ),
+                  ),
+                  Text(
+                    'Make it work, make it right, and make it fast.',
+                    style: AppTheme.kBody.copyWith(
+                      color: TheVaultColor.kS5,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   const Gap(20),
@@ -69,7 +78,7 @@ class _SignInState extends State<SignIn> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Email',
+                        'Email*',
                       ),
                       TextButton(
                         onPressed: () {
@@ -95,11 +104,9 @@ class _SignInState extends State<SignIn> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     labelText: 'Enter email address',
-                    prefixIcon: Icon(
-                      Icons.mail_lock_rounded,
-                      color: TheVaultColor.kS0.withOpacity(
-                        0.5,
-                      ),
+                    prefixIcon: const Icon(
+                      Icons.person,
+                      color: TheVaultColor.kS5,
                     ),
                   ),
                   const Gap(10),
@@ -107,11 +114,9 @@ class _SignInState extends State<SignIn> {
                     controller: _passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     labelText: 'Enter password',
-                    prefixIcon: Icon(
-                      Icons.key_rounded,
-                      color: TheVaultColor.kS0.withOpacity(
-                        0.5,
-                      ),
+                    prefixIcon: const Icon(
+                      Icons.fingerprint,
+                      color: TheVaultColor.kS5,
                     ),
                     suffixIcon: Icon(
                       Icons.remove_red_eye_rounded,
@@ -120,15 +125,10 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
-
+// -- FORGOT PASSWORD BTN
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ForgotPassword(),
-                        ),
-                      );
+                      ForgetPasswordScreen.buildShowModalBottomSheet(context);
                     },
                     child: Text(
                       'Forgot password',
@@ -162,192 +162,6 @@ class _SignInState extends State<SignIn> {
                           ),
                   ),
                   const Gap(20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'No Account?',
-                        style: AppTheme.kBody.copyWith(
-                          color: TheVaultColor.kS3,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const Gap(
-                        10,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SignUp(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'SignUp',
-                          style: AppTheme.kBody.copyWith(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Gap(20),
-                  Row(
-                    children: [
-                      const Expanded(
-                        child: Divider(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                        ),
-                        child: Text(
-                          'Or login with',
-                          style: AppTheme.kBody.copyWith(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: TheVaultColor.kS5,
-                          ),
-                        ),
-                      ),
-                      const Expanded(
-                        child: Divider(),
-                      ),
-                    ],
-                  ),
-                  const Gap(20),
-
-                  //social media section
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(
-                            10,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: TheVaultColor.kS9,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              10,
-                            ),
-                          ),
-                          height: 50,
-                          width: 80,
-                          child: Image.asset(
-                            AppImage.facebookPng,
-                          ),
-                        ),
-                      ),
-                      const Gap(20),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(
-                            10,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: TheVaultColor.kS9,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              10,
-                            ),
-                          ),
-                          height: 50,
-                          width: 80,
-                          child: Image.asset(
-                            AppImage.googlePng,
-                          ),
-                        ),
-                      ),
-                      const Gap(20),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(
-                            10,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: TheVaultColor.kS9,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              10,
-                            ),
-                          ),
-                          height: 50,
-                          width: 80,
-                          child: Image.asset(
-                            AppImage.twitterPng,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Gap(20),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text:
-                              'By continuing you acknowledge that you have read and understood and agree to our terms',
-                          style: AppTheme.kBody.copyWith(
-                            color: TheVaultColor.kS7,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' Terms of Service',
-                          style: AppTheme.kBody.copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              // Handled the tap here.
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const TermsAndServices(),
-                                ),
-                              );
-                            },
-                        ),
-                        TextSpan(
-                          text: ' and ',
-                          style: AppTheme.kBody.copyWith(
-                            color: TheVaultColor.kS7,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' Privacy Policy',
-                          style: AppTheme.kBody.copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              // Handled the tap here.
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PrivacyPolicy(),
-                                ),
-                              );
-                            },
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),

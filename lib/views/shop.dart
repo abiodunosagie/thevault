@@ -1,13 +1,14 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gap/gap.dart';
 
+import '../components/live_product_card_widget.dart';
 import '../constants/constants.dart';
 import '../controllers/cart_controller.dart';
 import '../data/data_provider.dart';
 import '../model/my_product_model.dart';
-import '../widgets/live_product_card_widget.dart';
 import 'cart.dart';
 import 'details_page.dart';
 
@@ -22,24 +23,14 @@ class Shop extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: TheVaultColor.kSecondaryColor,
+        backgroundColor: TheVaultColor.kS0,
         title: const Text(
           'All Product',
         ),
         centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(
-            left: 20,
-          ),
-          child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              size: 17,
-            ),
-          ),
+        automaticallyImplyLeading: true,
+        iconTheme: const IconThemeData(
+          color: TheVaultColor.kWhite,
         ),
         actions: [
           Padding(
@@ -85,7 +76,8 @@ class Shop extends ConsumerWidget {
                       children: [
                         Text(
                           'Shop',
-                          style: AppTheme.kHeadingOne.copyWith(
+                          style: AppTheme.kHeading.copyWith(
+                            color: TheVaultColor.kS3,
                             fontSize: 30,
                           ),
                         ),
@@ -96,10 +88,64 @@ class Shop extends ConsumerWidget {
                           child: Container(
                             height: 1,
                             width: double.infinity,
-                            color: TheVaultColor.kSecondaryColor,
+                            color: TheVaultColor.kS0,
                           ),
                         ),
                       ],
+                    ),
+                    //slider
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        aspectRatio: 16 / 9,
+                        initialPage: 0,
+                        reverse: false,
+                        autoPlayInterval: const Duration(seconds: 3),
+                        autoPlayAnimationDuration:
+                            const Duration(milliseconds: 800),
+                        height: 300.0,
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        scrollDirection: Axis.horizontal,
+                      ),
+                      items: userList.map((product) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 5,
+                                ),
+                                width: MediaQuery.of(context).size.width,
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 10.0,
+                                  vertical: 5,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: TheVaultColor.kWhite,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      offset: Offset(0, 6),
+                                      color: TheVaultColor.kS8,
+                                      blurRadius: 8,
+                                      spreadRadius: 4,
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                      product.image,
+                                    ),
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
                     ),
                     const Gap(20),
                     MasonryGridView.builder(

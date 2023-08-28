@@ -1,8 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:the_meat_vault/views/home_page.dart';
+import 'package:the_meat_vault/views/onboarding/view/onboarding_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const TheMeatUp());
 }
 
@@ -13,8 +16,7 @@ class TheMeatUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const ProviderScope(
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        home: Onboarding(),
       ),
     );
   }

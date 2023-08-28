@@ -15,7 +15,7 @@ class CartScreen extends ConsumerWidget {
     final cartItem = ref.watch(itemBagProvider);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: TheVaultColor.kSecondaryColor,
+        backgroundColor: TheVaultColor.kS0,
         title: const Text(
           'Cart',
         ),
@@ -82,11 +82,11 @@ class CartScreen extends ConsumerWidget {
                                   children: [
                                     Text(
                                       cartItem[index].title,
-                                      style: AppTheme.kCardTitle,
+                                      style: AppTheme.kHeading,
                                     ),
                                     Text(
                                       cartItem[index].shortDescription,
-                                      style: AppTheme.kBodyTextTwo,
+                                      style: AppTheme.kBody,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -97,7 +97,7 @@ class CartScreen extends ConsumerWidget {
                                       children: [
                                         Text(
                                           '\$${cartItem[index].price}',
-                                          style: AppTheme.kCardTitle,
+                                          style: AppTheme.kHeading,
                                         ),
                                         Row(
                                           children: [
@@ -117,10 +117,8 @@ class CartScreen extends ConsumerWidget {
                                             ),
                                             Text(
                                               product[index].qty.toString(),
-                                              style:
-                                                  AppTheme.kCardTitle.copyWith(
-                                                color:
-                                                    TheVaultColor.kBlackColor,
+                                              style: AppTheme.kHeading.copyWith(
+                                                color: TheVaultColor.kBlack,
                                                 fontWeight: FontWeight.w700,
                                               ),
                                             ),
@@ -164,7 +162,7 @@ class CartScreen extends ConsumerWidget {
                   const Gap(20),
                   Text(
                     'Have a coupon code? enter here',
-                    style: AppTheme.kBodyTextTwo,
+                    style: AppTheme.kBody,
                   ),
                   const Gap(5),
                   Container(
@@ -176,7 +174,7 @@ class CartScreen extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         width: 1,
-                        color: TheVaultColor.kPrimaryColor,
+                        color: TheVaultColor.kP0,
                       ),
                     ),
                     child: Row(
@@ -184,7 +182,7 @@ class CartScreen extends ConsumerWidget {
                       children: [
                         Text(
                           'SMT2023',
-                          style: AppTheme.kBodyTextTwo.copyWith(
+                          style: AppTheme.kBody.copyWith(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
                           ),
@@ -193,8 +191,8 @@ class CartScreen extends ConsumerWidget {
                           children: [
                             Text(
                               'Available',
-                              style: AppTheme.kHeadingOne.copyWith(
-                                color: TheVaultColor.kPrimaryColor,
+                              style: AppTheme.kHeading.copyWith(
+                                color: TheVaultColor.kP0,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                               ),
@@ -215,15 +213,15 @@ class CartScreen extends ConsumerWidget {
                     children: [
                       Text(
                         'Subtotal:',
-                        style: AppTheme.kHeadingOne.copyWith(
+                        style: AppTheme.kHeading.copyWith(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       Text(
                         '\$4521',
-                        style: AppTheme.kBigTitle.copyWith(
-                          color: TheVaultColor.kSecondaryColor,
+                        style: AppTheme.kHeading.copyWith(
+                          color: TheVaultColor.kS0,
                         ),
                       ),
                     ],
@@ -233,15 +231,15 @@ class CartScreen extends ConsumerWidget {
                     children: [
                       Text(
                         'Delivery Fee:',
-                        style: AppTheme.kBodyTextTwo.copyWith(
+                        style: AppTheme.kBody.copyWith(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       Text(
                         '\$11',
-                        style: AppTheme.kBodyTextTwo.copyWith(
+                        style: AppTheme.kBody.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
-                          color: TheVaultColor.kPrimaryColor,
+                          color: TheVaultColor.kP0,
                         ),
                       ),
                     ],
@@ -252,15 +250,15 @@ class CartScreen extends ConsumerWidget {
                     children: [
                       Text(
                         'Discount:',
-                        style: AppTheme.kBodyTextTwo.copyWith(
+                        style: AppTheme.kBody.copyWith(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       Text(
                         '25%',
-                        style: AppTheme.kBodyTextTwo.copyWith(
+                        style: AppTheme.kBody.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
-                          color: TheVaultColor.kPrimaryColor,
+                          color: TheVaultColor.kP0,
                         ),
                       ),
                     ],
@@ -269,7 +267,7 @@ class CartScreen extends ConsumerWidget {
                   const Divider(
                     thickness: 1,
                     height: 1,
-                    color: TheVaultColor.kSecondaryColor,
+                    color: TheVaultColor.kS0,
                   ),
                   const Gap(5),
                   Row(
@@ -277,15 +275,15 @@ class CartScreen extends ConsumerWidget {
                     children: [
                       Text(
                         'Total',
-                        style: AppTheme.kHeadingOne.copyWith(
+                        style: AppTheme.kHeading.copyWith(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
                       Text(
                         '\$${ref.watch(priceCalcProvider).floor()}',
-                        style: AppTheme.kBigTitle.copyWith(
-                          color: TheVaultColor.kPrimaryColor,
+                        style: AppTheme.kHeading.copyWith(
+                          color: TheVaultColor.kP0,
                         ),
                       ),
                     ],

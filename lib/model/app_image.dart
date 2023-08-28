@@ -1,5 +1,7 @@
 class AppImage {
   static const String _basePng = 'assets/products/';
+  static const String _baseGif = 'assets/gif/';
+  static const String _basePngTwo = 'assets/png/';
   static const String airPodMax = '${_basePng}airpodmax.png';
   static const String airPodPro = '${_basePng}airpodpro.png';
   static const String appleWatch = '${_basePng}applewatch.png';
@@ -33,6 +35,9 @@ class AppImage {
       '${_basePng}samsungwashingmachine.png';
   static const String samsungWatch = '${_basePng}samsungwatch.png';
   static const String sandisk = '${_basePng}sandisk.png';
+  static const String facebookPng = '${_basePngTwo}facebook_icon.png';
+  static const String twitterPng = '${_basePngTwo}twitter_icon.png';
+  static const String googlePng = '${_basePngTwo}google_icon.png';
   static const String sandisk32 = '${_basePng}sandisk32.png';
   static const String sandisk64 = '${_basePng}sandisk64.png';
   static const String storeLogo = '${_basePng}storelogo.png';
@@ -44,4 +49,9 @@ class AppImage {
   static const String windowsTwo = '${_basePng}windowstwo.png';
   static const String hand = '${_basePng}hand.png';
   static const String logo = '${_basePng}logo.png';
+  //Gif imports
+  static const String deliveredGif = '${_baseGif}delivered.gif';
+  static const String messageGif = '${_baseGif}message.gif';
+  static const String orderingGif = '${_baseGif}ordering.gif';
+  static const String shoppingGif = '${_baseGif}shopping.gif';
 }

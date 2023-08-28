@@ -12,7 +12,7 @@ class ProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: TheVaultColor.kWhiteColor,
+        color: TheVaultColor.kWhite,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
@@ -31,7 +31,7 @@ class ProductWidget extends StatelessWidget {
             child: Container(
               width: double.infinity,
               margin: const EdgeInsets.all(8),
-              color: TheVaultColor.kLightBackground,
+              color: TheVaultColor.kS9,
               child: Image.asset(
                 'assets/products/beef.png',
               ),
@@ -46,12 +46,12 @@ class ProductWidget extends StatelessWidget {
                 children: [
                   Text(
                     'Product Name',
-                    style: AppTheme.kCardTitle,
+                    style: AppTheme.kHeading,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text(
+                  const Text(
                     'Short description product',
-                    style: AppTheme.kBodyTextTwo,
+                    style: AppTheme.kBody,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Row(
@@ -59,7 +59,7 @@ class ProductWidget extends StatelessWidget {
                     children: [
                       Text(
                         '\$ 874',
-                        style: AppTheme.kCardTitle,
+                        style: AppTheme.kHeading,
                       ),
                       IconButton(
                         onPressed: () {},

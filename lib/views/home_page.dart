@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -5,14 +6,15 @@ import 'package:gap/gap.dart';
 import 'package:the_meat_vault/controllers/cart_controller.dart';
 import 'package:the_meat_vault/data/data_provider.dart';
 import 'package:the_meat_vault/model/my_product_model.dart';
-import 'package:the_meat_vault/views/cart.dart';
+import 'package:the_meat_vault/views/authentication/signin.dart';
 import 'package:the_meat_vault/views/shop.dart';
 
+import '../components/adsbanner_widget.dart';
+import '../components/chip_widget.dart';
+import '../components/live_product_card_widget.dart';
 import '../constants/constants.dart';
 import '../model/app_image.dart';
-import '../widgets/adsbanner_widget.dart';
-import '../widgets/chip_widget.dart';
-import '../widgets/live_product_card_widget.dart';
+import 'cart.dart';
 import 'details_page.dart';
 
 final currentIndexProvider = StateProvider<int>((ref) {
@@ -30,7 +32,7 @@ class HomePage extends ConsumerWidget {
     final cartItem = ref.watch(itemBagProvider);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: TheVaultColor.kSecondaryColor,
+        backgroundColor: TheVaultColor.kS0,
         centerTitle: true,
         title: Image.asset(
           AppImage.logo,
@@ -71,7 +73,10 @@ class HomePage extends ConsumerWidget {
           return SingleChildScrollView(
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(25),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
                 child: Column(
                   children: [
                     //Ads banner section
@@ -125,15 +130,15 @@ class HomePage extends ConsumerWidget {
                       ),
                     ),
                     //Hot sales section
-                    const Gap(
-                      12,
-                    ),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Hot Sales',
-                          style: AppTheme.kHeadingOne,
+                          style: AppTheme.kHeading.copyWith(
+                            color: TheVaultColor.kS0,
+                          ),
                         ),
                         TextButton(
                           onPressed: () {
@@ -146,7 +151,9 @@ class HomePage extends ConsumerWidget {
                           },
                           child: Text(
                             'See All',
-                            style: AppTheme.kSeeAllText,
+                            style: AppTheme.kBody.copyWith(
+                              color: TheVaultColor.kS3,
+                            ),
                           ),
                         ),
                       ],
@@ -177,10 +184,6 @@ class HomePage extends ConsumerWidget {
                             userList: userList,
                             liveProductIndex: index,
                           ),
-
-                          // ProductCardWidget(
-                          //   productIndex: index,
-                          // ),
                         ),
                       ),
                     ),
@@ -190,7 +193,9 @@ class HomePage extends ConsumerWidget {
                       children: [
                         Text(
                           'Featured Sales',
-                          style: AppTheme.kHeadingOne,
+                          style: AppTheme.kHeading.copyWith(
+                            color: TheVaultColor.kS0,
+                          ),
                         ),
                         TextButton(
                           onPressed: () {
@@ -203,7 +208,9 @@ class HomePage extends ConsumerWidget {
                           },
                           child: Text(
                             'See All',
-                            style: AppTheme.kSeeAllText,
+                            style: AppTheme.kBody.copyWith(
+                              color: TheVaultColor.kS3,
+                            ),
                           ),
                         ),
                       ],
@@ -256,8 +263,8 @@ class HomePage extends ConsumerWidget {
         currentIndex: currentIndex,
         onTap: (value) =>
             ref.read(currentIndexProvider.notifier).update((state) => value),
-        selectedItemColor: TheVaultColor.kSecondaryColor,
-        unselectedItemColor: TheVaultColor.kSecondaryColor,
+        selectedItemColor: TheVaultColor.kS0,
+        unselectedItemColor: TheVaultColor.kS0,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
@@ -305,6 +312,52 @@ class HomePage extends ConsumerWidget {
             ),
           ),
         ],
+      ),
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: TheVaultColor.kS0,
+              ),
+              child: Text(
+                'Welcome, Smith!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.shop),
+              title: const Text('Shop'),
+              onTap: () {
+                // Handle shop page navigation here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Shop(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Sign Out'),
+              onTap: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignIn(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

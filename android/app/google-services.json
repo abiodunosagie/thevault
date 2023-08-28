@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "791553880550",
+    "project_id": "thevault-1e41d",
+    "storage_bucket": "thevault-1e41d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791553880550:android:b66e4338075bf3871e2627",
+        "android_client_info": {
+          "package_name": "com.example.the_meat_vault"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791553880550-6qo92v52t889fhnpvntto0fvfb8o27rs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDprqfI5i7A7U3Q6IpVNcvE38PZlQ8KVus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791553880550-6qo92v52t889fhnpvntto0fvfb8o27rs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

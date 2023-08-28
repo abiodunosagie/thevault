@@ -19,7 +19,7 @@ class DetailsPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: TheVaultColor.kSecondaryColor,
+        backgroundColor: TheVaultColor.kS0,
         title: const Text(
           'Details Page',
           overflow: TextOverflow.ellipsis,
@@ -33,7 +33,7 @@ class DetailsPage extends ConsumerWidget {
             Icons.arrow_back_ios,
             size: 20,
           ),
-          color: TheVaultColor.kWhiteColor,
+          color: TheVaultColor.kWhite,
         ),
       ),
       body: SingleChildScrollView(
@@ -45,7 +45,7 @@ class DetailsPage extends ConsumerWidget {
               ),
               height: 300,
               width: double.infinity,
-              color: TheVaultColor.kWhiteColor,
+              color: TheVaultColor.kWhite,
               child: Image.network(e.image),
             ),
             const Gap(
@@ -62,8 +62,8 @@ class DetailsPage extends ConsumerWidget {
                 children: [
                   Text(
                     e.title,
-                    style: AppTheme.kBigTitle.copyWith(
-                      color: TheVaultColor.kPrimaryColor,
+                    style: AppTheme.kHeading.copyWith(
+                      color: TheVaultColor.kS0,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -95,8 +95,8 @@ class DetailsPage extends ConsumerWidget {
                       const Gap(5),
                       Text(
                         ' ${e.ratingInfo['count'].toString()} ratings',
-                        style: AppTheme.kBodyText.copyWith(
-                          color: TheVaultColor.kBlackColor,
+                        style: AppTheme.kBody.copyWith(
+                          color: TheVaultColor.kS3,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -110,7 +110,9 @@ class DetailsPage extends ConsumerWidget {
                     children: [
                       Text(
                         '\$${e.price}',
-                        style: AppTheme.kHeadingOne.copyWith(),
+                        style: AppTheme.kHeading.copyWith(
+                          color: TheVaultColor.kS0,
+                        ),
                       ),
                       Row(
                         children: [
@@ -122,6 +124,12 @@ class DetailsPage extends ConsumerWidget {
                             },
                             icon: const Icon(
                               Icons.do_not_disturb_on_outlined,
+                            ),
+                          ),
+                          Text(
+                            '10',
+                            style: AppTheme.kHeading.copyWith(
+                              color: TheVaultColor.kS0,
                             ),
                           ),
                           IconButton(
@@ -141,15 +149,20 @@ class DetailsPage extends ConsumerWidget {
                   const Gap(20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: TheVaultColor.kPrimaryColor,
+                      backgroundColor: TheVaultColor.kP0,
                       minimumSize: const Size(
                         double.infinity,
                         60,
                       ),
                     ),
                     onPressed: () {},
-                    child: const Text(
+                    child: Text(
                       'Add item to bag',
+                      style: AppTheme.kBody.copyWith(
+                        // color: TheVaultColor.kS0,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   )
                 ],
@@ -162,8 +175,8 @@ class DetailsPage extends ConsumerWidget {
         currentIndex: currentIndex,
         onTap: (value) =>
             ref.read(currentIndexProvider.notifier).update((state) => value),
-        selectedItemColor: TheVaultColor.kSecondaryColor,
-        unselectedItemColor: TheVaultColor.kSecondaryColor,
+        selectedItemColor: TheVaultColor.kS0,
+        unselectedItemColor: TheVaultColor.kS0,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(

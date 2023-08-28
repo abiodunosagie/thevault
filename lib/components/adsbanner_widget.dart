@@ -20,7 +20,7 @@ class AdsBannerWidget extends ConsumerWidget {
       width: double.infinity,
       height: 180,
       decoration: BoxDecoration(
-        color: TheVaultColor.kWhiteColor,
+        color: TheVaultColor.kWhite,
         // border: Border.all(
         //   color: TheVaultColor.kSecondaryColor.withOpacity(
         //     0.8,
@@ -55,23 +55,23 @@ class AdsBannerWidget extends ConsumerWidget {
                 children: [
                   Text(
                     'Shopiverse',
-                    style: AppTheme.kBigTitle.copyWith(
-                      color: TheVaultColor.kSecondaryColor,
+                    style: AppTheme.kHeading.copyWith(
+                      color: TheVaultColor.kS0,
                     ),
                   ),
                   const Gap(6),
                   Text(
                     "Find the Apple product and\naccesories you're looking.",
-                    style: AppTheme.kBodyText.copyWith(
+                    style: AppTheme.kBody.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: TheVaultColor.kSecondaryColor,
+                      color: TheVaultColor.kS0,
                     ),
                   ),
                   const Gap(8),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: TheVaultColor.kSecondaryColor,
-                        foregroundColor: TheVaultColor.kWhiteColor,
+                        backgroundColor: TheVaultColor.kS0,
+                        foregroundColor: TheVaultColor.kWhite,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 35,
                           vertical: 12,

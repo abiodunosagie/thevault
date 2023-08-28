@@ -17,7 +17,8 @@ class LiveProductCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: TheVaultColor.kWhiteColor,
+        //color for the box
+        color: TheVaultColor.kWhite,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
@@ -36,7 +37,7 @@ class LiveProductCardWidget extends StatelessWidget {
             child: Container(
               width: double.infinity,
               margin: const EdgeInsets.all(8),
-              color: TheVaultColor.kWhiteColor,
+              color: TheVaultColor.kWhite,
               child: Image.network(
                 userList[liveProductIndex].image,
                 fit: BoxFit.contain,
@@ -51,12 +52,17 @@ class LiveProductCardWidget extends StatelessWidget {
               children: [
                 Text(
                   userList[liveProductIndex].title,
-                  style: AppTheme.kCardTitle,
+                  style: AppTheme.kHeading.copyWith(
+                    color: TheVaultColor.kS3,
+                    fontSize: 18,
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
                   userList[liveProductIndex].description,
-                  style: AppTheme.kBodyTextTwo,
+                  style: AppTheme.kBody.copyWith(
+                    color: TheVaultColor.kS3,
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
                 Row(
@@ -65,7 +71,10 @@ class LiveProductCardWidget extends StatelessWidget {
                     Flexible(
                       child: Text(
                         '\$ ${userList[liveProductIndex].price}',
-                        style: AppTheme.kCardTitle,
+                        style: AppTheme.kHeading.copyWith(
+                          color: TheVaultColor.kS2,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     // IconButton(

@@ -20,7 +20,7 @@ class ProductCardWidget extends ConsumerWidget {
     final product = ref.watch(productNotifierProvider);
     return Container(
       decoration: BoxDecoration(
-        color: TheVaultColor.kWhiteColor,
+        color: TheVaultColor.kWhite,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
@@ -39,7 +39,7 @@ class ProductCardWidget extends ConsumerWidget {
             child: Container(
               width: double.infinity,
               margin: const EdgeInsets.all(8),
-              color: TheVaultColor.kLightBackground,
+              color: TheVaultColor.kS9,
               child: Image.asset(
                 product[productIndex].imgUrl,
                 fit: BoxFit.contain,
@@ -54,12 +54,12 @@ class ProductCardWidget extends ConsumerWidget {
               children: [
                 Text(
                   product[productIndex].title,
-                  style: AppTheme.kCardTitle,
+                  style: AppTheme.kHeading,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
                   product[productIndex].shortDescription,
-                  style: AppTheme.kBodyTextTwo,
+                  style: AppTheme.kBody,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Row(
@@ -68,7 +68,7 @@ class ProductCardWidget extends ConsumerWidget {
                     Flexible(
                       child: Text(
                         '\$ ${product[productIndex].price}',
-                        style: AppTheme.kCardTitle,
+                        style: AppTheme.kHeading,
                       ),
                     ),
                     IconButton(
